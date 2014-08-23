@@ -15,6 +15,9 @@ player_info player;
 room_type current_room;
 BOOL dataValid = FALSE;
 
+// currently selected tab (invent/stats/skills/spells)
+BYTE group = -1;
+
 /* This flag is True before we get the first player info message from the server,
  * and when we're not in the game.  We use it to keep track of entering the game,
  * so that we can load stuff from the INI file only the first time we get a player
@@ -690,4 +693,14 @@ int ComputeObjectDistance(room_contents_node *r1, room_contents_node *r2)
 player_info *GetPlayerInfo(void)
 {
    return &player;
+}
+
+void SetCurrentGroup(BYTE newGroup) 
+{
+   group = newGroup;
+}
+
+BYTE GetCurrentGroup() 
+{
+   return group;
 }
